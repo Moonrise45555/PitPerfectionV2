@@ -61,9 +61,7 @@
     <Attempt id="25" started="01/22/2023 03:58:52" isStartedSynced="True" ended="01/22/2023 05:20:35" isEndedSynced="True">
       <RealTime>01:21:42.5660000</RealTime>
     </Attempt>
-    <Attempt id="26" started="01/22/2023 05:21:11" isStartedSynced="True" ended="01/22/2023 06:44:20" isEndedSynced="True">
-      <RealTime>01:23:09.3870000</RealTime>
-    </Attempt>
+    
     <Attempt id="27" started="01/22/2023 06:44:40" isStartedSynced="True" ended="01/22/2023 08:11:23" isEndedSynced="True">
       <RealTime>01:26:43.0110000</RealTime>
     </Attempt>

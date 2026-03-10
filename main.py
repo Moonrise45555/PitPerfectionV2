@@ -9,7 +9,7 @@ from skopt.space import Real
 import splits_analysis as sa
 import os
 from typing import cast, List, Tuple
-
+from copy import deepcopy
 
 format_code = "%H:%M:%S.%f"
 
@@ -20,10 +20,15 @@ end_date = dt.now()
 
 players = os.listdir("./splits/")
 
+all_players = deepcopy(players)
 
-runs = []
+types = ["Boomerless", "Classic", "Lite", "APNT"]
 
-runs = sw.get_runs_filtered(start_date, end_date, players)
+all_types = ["Boomerless", "Classic", "Lite", "Pixlless", "APNT"]
+
+runs : list[sw.Run] = []
+
+runs = sw.get_runs_filtered(start_date, end_date, players, types)
 
 
 
@@ -47,7 +52,7 @@ while True:
             end_date = dt.strptime(inp[2],"%Y-%m-%d")
         print("time of runs set to be between ", start_date ,"and ", end_date)
 
-        runs = sw.get_runs_filtered(start_date, end_date, players)
+        runs = sw.get_runs_filtered(start_date, end_date, players, types)
 
     if inp[0] == "player":
         if inp[1] == "add":
@@ -59,8 +64,33 @@ while True:
                     players.remove(p)
                 except:
                     print(f"{p} not found.")
+        
+        elif inp[1] == "clear":
+            players.clear()
+        
+        elif inp[1] == "all":
+            players = all_players
 
-        runs = sw.get_runs_filtered(start_date, end_date, players)
+        runs = sw.get_runs_filtered(start_date, end_date, players, types)
+
+    if inp[0] == "types":
+        if inp[1] == "add":
+            types += inp[2:]
+
+        elif inp[1] == "remove":
+            for p in inp[2:]:
+                try:
+                    types.remove(p)
+                except:
+                    print(f"{p} not found.")
+        
+        elif inp[1] == "clear":
+            types.clear()
+        
+        elif inp[1] == "all":
+            types = all_types
+
+        runs = sw.get_runs_filtered(start_date, end_date, players, types)
 
     if inp[0] == "gold":
         pb = sw.get_pb(sw.limit_to_range(inp[1], runs))
@@ -70,6 +100,39 @@ while True:
             continue
     
         print(sw.get_run_descriptor(pb))
+
+    if inp[0] == "comsob":
+        best_segments_runs = []
+
+        for i in range(11):
+
+            found_min = None
+
+            #gets a start to work off of...
+            for r in runs:
+                if r.is_trustworthy_segment(i):
+                    found_min = r
+                    break
+            if found_min == None:
+                print("not enough splits!")
+                break
+
+                
+            for r in runs:
+                if r.is_trustworthy_segment(i) and r.segment_times[i] < found_min.segment_times[i]:
+                    found_min = r
+            best_segments_runs.append(found_min)
+
+        for r in range(len(best_segments_runs)):
+            restricted = sw.limit_to_range(sw.split_names[r],[best_segments_runs[r]])[0]
+            descriptor = sw.get_run_descriptor(restricted)
+
+            print(sw.pad_to_length(sw.split_names[r], 5), descriptor)
+        print("Sum: ", str(sw.sum_td([best_segments_runs[i].segment_times[i] for i in range(11)]))[:-4])
+
+
+
+                
 
     if inp[0] == "rank":
 
