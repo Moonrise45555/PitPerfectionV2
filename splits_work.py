@@ -364,9 +364,6 @@ def get_runs_by_player(player : str):
             runs += get_lite_runs(get_runs(f"./splits/{player}/{f}", player, "Pixlless"))
         if f == "splitlite.lss":
             runs += merge_tens_splits(get_runs(f"./splits/{player}/{f}", player, "Lite"))
-        if f == "apnt.lss":
-            #runs += get_lite_runs(get_runs(f"./splits/{player}/{f}", player, "APNT"))
-            pass
 
 
             
