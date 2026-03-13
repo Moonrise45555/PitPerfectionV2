@@ -6,7 +6,7 @@ import sys
 import splits_work as sw
 from datetime import timedelta as td
 from skopt.space import Real
-import splits_analysis as sa
+
 import os
 from typing import cast, List, Tuple
 from copy import deepcopy
@@ -14,7 +14,9 @@ import db_work as db
 import sqlite3
 
 
+con = sqlite3.connect("runs.db")
 
+cur = con.cursor()
 
 
 
@@ -35,7 +37,7 @@ all_types = ["Boomerless", "Classic", "Lite", "Pixlless", "APNT"]
 
 runs : list[sw.Run] = []
 
-runs = sw.get_runs_filtered(start_date, end_date, players, types)
+runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
 
 
 
@@ -59,7 +61,7 @@ while True:
             end_date = dt.strptime(inp[2],"%Y-%m-%d")
         print("time of runs set to be between ", start_date ,"and ", end_date)
 
-        runs = sw.get_runs_filtered(start_date, end_date, players, types)
+        runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
 
     if inp[0] == "player":
         if inp[1] == "add":
@@ -78,7 +80,7 @@ while True:
         elif inp[1] == "all":
             players = all_players
 
-        runs = sw.get_runs_filtered(start_date, end_date, players, types)
+        runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
 
     if inp[0] == "types":
         if inp[1] == "add":
@@ -97,7 +99,7 @@ while True:
         elif inp[1] == "all":
             types = all_types
 
-        runs = sw.get_runs_filtered(start_date, end_date, players, types)
+        runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
 
     if inp[0] == "gold":
         pb = sw.get_pb(sw.limit_to_range(inp[1], runs))

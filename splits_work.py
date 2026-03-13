@@ -6,10 +6,25 @@ import random
 import xml.etree.ElementTree as ET
 import sys
 import os
-
+import dataclasses
+from enum import Enum
 split_names = ["0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "90-99", "100"]
 
+lengths_from_filesnames = []
 
+
+class PitType(Enum):
+    CLASSIC = 1
+    BOOMERLESS = 2
+    PIXLLESS = 3
+
+class CategoryLength(Enum):
+    FULL = 1
+    LITE = 2
+
+class SplitDetail(Enum):
+    SPLIT = 1
+    MERGED = 2
 
 def sum_td(list):
     total = td(0)
@@ -18,11 +33,34 @@ def sum_td(list):
             total += i
     return total
 
+type_from_name = {"boomerless" : PitType.BOOMERLESS, "classic" : PitType.CLASSIC, "pixlless" : PitType.PIXLLESS}
+length_from_name = {"lite" : CategoryLength.LITE, "full" : CategoryLength.FULL}
+split_detail_from_name = {"split" : SplitDetail.SPLIT, "merged" : SplitDetail.SPLIT}
+
+@dataclasses.dataclass
+class RunContext:
+    player : str
+    pit_type : PitType
+    cat_length : CategoryLength
+    split_detail : SplitDetail
+
+def get_context_from_splits_name(name, player : str) -> RunContext:
+
+    assert("_" in name)
+
+    name = name.split("_")
+
+    return RunContext(player, type_from_name[name[0]], length_from_name[name[1]], split_detail_from_name[name[2]])
+
+
+    
+
 
 class Run:
+    db_id : int
     player : str
-    segment_times : list[td]
-    type : str
+    segment_times : list[td|None]
+    
 
     
     def get_split_time(self, split : int):
@@ -45,8 +83,7 @@ class Run:
 
     
     def get_final_time(self):
-
-        
+        """gets the sum of all segments in the run, returns none if the run did not finish."""
         if self.segment_times[-1] == None:
             return None
         
@@ -55,10 +92,27 @@ class Run:
             if i != None:
                 total += i
 
-
-        
-        
         return total
+    
+    def get_player(self):
+        return self.run_context.player
+    
+    def get_pit_type(self):
+        return self.run_context.pit_type
+    
+    def get_category_length(self):
+        return self.run_context.cat_length
+    
+    def get_segments_sum(self, start,end):
+        return sum_td([i for i in self.segment_times[start:end] if i != None])
+    
+    def get_segment_time(self, seg):
+        return self.segment_times[seg]
+    
+    def get_split_detail(self):
+        return self.run_context.split_detail
+    
+
     
 
 
@@ -70,27 +124,30 @@ class Run:
     time_started : dt
     time_ended : dt
 
-    def __init__(self, splitt, id, started, ended, player, type):
+    def __init__(self, splitt : list[td | None], id : int, started : dt, ended : dt, run_ctx : RunContext, db_id : int):
         self.segment_times = splitt
         self.livesplit_id = id
         self.time_started = started
-        self. time_ended = ended
-        self.player = player
-        self.type = type
-        
+        self.time_ended = ended
+        self.run_context = run_ctx
+        self.db_id = db_id
 
-invalid_run : Run = Run(None, None, None, None, None, None)
+
+
+        
+def copy_run_with_new_segments(r, segments : list[td|None]):
+    return Run(segments, r.livesplit_id, r.time_started, r.time_ended, RunContext(r.get_player(), r.get_pit_type(), r.get_category_length(), r.get_split_detail()), r.db_id)
 
 
 def get_lite_runs(classic_runs : list[Run]):
     cut_runs = []
     for r in classic_runs:
-        if r.type == "APNT":
+        if r.get_pit_type() == "APNT":
             new_segments = r.segment_times[11:22]
         else:
             new_segments = r.segment_times[-11:]
 
-        cut_runs.append(Run(new_segments, r.livesplit_id, r.time_started, r.time_ended, r.player, r.type))
+        cut_runs.append(copy_run_with_new_segments(r, new_segments))
     return cut_runs
     
 
@@ -117,8 +174,8 @@ def get_segment_time(segment, id):
     format_code = "%H:%M:%S.%f"
     #searches for the id of the chosen run within the segment
     s_history= segment[4]
-    if id == 135:
-        pass
+    
+
     ids = [int(h.attrib["id"]) for h in s_history]
     run_index = binary_search(id, ids)
     if run_index == -2:
@@ -138,7 +195,7 @@ def get_segment_time(segment, id):
           
 
 
-def get_runs(path, player, run_type):
+def get_runs(path, ctx):
     tree = ET.parse(path)
     root = tree.getroot()
 
@@ -156,10 +213,14 @@ def get_runs(path, player, run_type):
 
         started = get_run_date(id, attempt_history)
         ended = get_run_ended(id, attempt_history)
-        runs.append(Run(segment_times, id, started, ended, player, run_type))
+        runs.append(Run(segment_times, id, started, ended, ctx, -1))
     return runs
 
 
+
+def assign_ids(runs : list[Run]):
+    for i in range(len(runs)):
+        runs[i].db_id = i
         
             
 
@@ -289,47 +350,6 @@ def get_pb(runs : list[Run]):
     return pb 
 from math import inf
 
-def expected_pb_time(runs : list[Run], pb, reset_thresholds=None, simulations=10000):
-    if reset_thresholds == None:
-        reset_thresholds = [td(999) for i in runs[0].segment_times]
-
-    
-    pb_final_time = pb.get_final_time()
-    
-
-
-   
-    valid_segment_times = [[] for r in runs[0].segment_times]
-    for r in runs:
-        for s in range(len(r.segment_times)):
-            if r.is_trustworthy_segment(s):
-                valid_segment_times[s].append(r.segment_times[s])
-    
-    
-
-    
-    
-    time_elapsed = td(0,0,0)
-    passed = 1
-    
-    for _ in range(simulations):
-
-        working_run = td(0,0,0)
-        for i in range(len(valid_segment_times)):
-            seg_time = valid_segment_times[i][random.randint(0, len(valid_segment_times[i]) - 1)]
-            working_run += seg_time
-            time_elapsed += seg_time
-            if i != len(valid_segment_times) - 1:
-                if working_run > reset_thresholds[i]:
-                    working_run = td.max
-                    break
-
-
-        if working_run < pb_final_time:
-            passed += 1
-
-        
-    return time_elapsed / passed if passed != 0 else td.max
 
 
 
@@ -339,36 +359,39 @@ def expected_pb_time(runs : list[Run], pb, reset_thresholds=None, simulations=10
 
 
 
-def get_average_run(runs : list[Run]):
+def get_average_run(runs : list[Run]) -> list[td|None]:
     segments = [td(0,0,0) for i in range(len(runs[0].segment_times))]
     for i in range(len(segments)):
         s_times = [j.segment_times[i] for j in runs if j.segment_times[i] != None and j.is_trustworthy_segment(i)]
         segments[i] = average(s_times) # type: ignore
     segments = [None if s == td(0,0,0) else s for s in segments]
 
-    return Run(segments, -1, dt.now(), dt.now(), "Mixed", "Mixed")
+    return segments
 
 
-def get_runs_by_player(player : str):
+def construct_runs_from_player(player : str):
     files = os.listdir(f"./splits/{player}/")
     runs = []
 
     for f in files:
-        if f[0:3] == "cla":
-            runs += get_lite_runs(get_runs(f"./splits/{player}/{f}", player, "Classic"))
-        if f[0:3] == "lit":
-            runs += get_runs(f"./splits/{player}/{f}", player, "Lite")
-        if f[0:3] == "boo":
-            runs += get_lite_runs(get_runs(f"./splits/{player}/{f}", player, "Boomerless"))
-        if f[0:3] == "pix":
-            runs += get_lite_runs(get_runs(f"./splits/{player}/{f}", player, "Pixlless"))
-        if f == "splitlite.lss":
-            runs += merge_tens_splits(get_runs(f"./splits/{player}/{f}", player, "Lite"))
+        path = f"./splits/{player}/{f}"
+        file_descriptor = f[:-4]
+
+        ctx = get_context_from_splits_name(file_descriptor, player)
+
+        raw_file_runs = get_runs(path, ctx)
+
+        if ctx.split_detail == SplitDetail.SPLIT:
+            runs += merge_tens_splits(raw_file_runs)
+        else:
+            runs += get_lite_runs(raw_file_runs)
+        
+    return runs
+        
+
 
 
             
-    
-    return runs
 
 
     
@@ -400,7 +423,7 @@ def merge_tens_splits(split_up_runs : list[Run]):
         else:
             new_splits.append(None)
 
-        new_runs.append(Run(new_splits,r.livesplit_id,r.time_started, r.time_ended, r.player,r.type))
+        new_runs.append(copy_run_with_new_segments(r, new_splits))
 
 
 
@@ -524,8 +547,7 @@ def split_sessions(Runs : list[Run]):
     return sessions
 
 
-def limit_to_range(range : str, runs : list[Run]) -> list[Run]:
-    #interpret range..
+def get_range_from_str(range):
     start_segment = 0
     end_segment = 11
 
@@ -541,6 +563,7 @@ def limit_to_range(range : str, runs : list[Run]) -> list[Run]:
             end_segment = 1
 
     elif "-" in range:
+        #form 0-10
         rooms = range.split("-")
         start_segment = int(rooms[0][0])
         end_segment = int(rooms[1][0])
@@ -559,9 +582,13 @@ def limit_to_range(range : str, runs : list[Run]) -> list[Run]:
         start_segment = 10
         end_segment = 11
 
-    else:
-        raise Exception()
+    return (start_segment, end_segment)
 
+    
+
+def limit_to_range(range : str, runs : list[Run]) -> list[Run]:
+    #interpret range..
+    start_segment, end_segment = get_range_from_str(range)
 
     cut_runs = []
     for r in runs:
@@ -569,31 +596,46 @@ def limit_to_range(range : str, runs : list[Run]) -> list[Run]:
         if r.is_trustworthy_range(start_segment, end_segment):
 
             new_segments = r.segment_times[start_segment:end_segment]
-            cut_runs.append(Run(new_segments, r.livesplit_id, r.time_started, r.time_ended, r.player, r.type))
+            cut_runs.append(copy_run_with_new_segments(r, new_segments))
     return cut_runs
     
 
+def filter_runs(runs, start_date, end_date, types, players):
+    runs = filter_date(runs, start_date, end_date)
+    new_runs = []
 
+    for r in runs:
+        if r.type in types and r.player in players:
+            new_runs.append(r)
+     
+    
+
+    return new_runs
+
+def get_all_players():
+    return os.listdir("./splits/")
     
 
 
 
 
-def get_runs_filtered(start_date, end_date, players, pit_types):
-
+def construct_all_runs():
     runs = []
 
+    players = get_all_players()
+
+
     for player in players:
-        player_runs = get_runs_by_player(player)
+        player_runs = construct_runs_from_player(player)
         for r in player_runs:
-            
-            if r.type in pit_types:
-                runs.append(r)
+            runs.append(r)
 
+    assign_ids(runs)
 
-    runs = filter_date(runs, start_date, end_date)
 
     return runs
+
+
 
 def pad_to_length(string, length):
     return string + (" " * (length - len(string)))
@@ -605,7 +647,7 @@ def get_run_descriptor(run : Run):
 
     player = pad_to_length(run.player, 15)
 
-    type = pad_to_length(run.type, 15)
+    type = pad_to_length(run.get_pit_type(), 15)
 
 
     return f"{time}  {player}  {run.time_started}  {type}   id {run.livesplit_id}"

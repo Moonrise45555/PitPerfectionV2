@@ -1,6 +1,7 @@
 import requests
 from time import sleep
 
+
 aliases = {"PTL1667" : "kora20_", "KoraFloof" : "kora20_", "vVanity485" : "Vanity485", "DiamondcrafterA" : "LunaEclipse_4"}
 blacklisted_players = ["savetheseasponges", "SwayNC_"] #blacklisted for splitting abnormally
 
@@ -42,6 +43,9 @@ urllib.request.urlretrieve("https://d2c9jb6sm40v74.cloudfront.net/Moonrise45555/
 
 
 
+
+def sort_file_into_folder(file, type, length, player):
+    pass
 
 
 
