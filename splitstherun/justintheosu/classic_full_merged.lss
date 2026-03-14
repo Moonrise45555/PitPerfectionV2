@@ -1,0 +1,911 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Run version="1.7.0">
+  <GameIcon />
+  <GameName>Super Paper Mario (im very eepy)</GameName>
+  <CategoryName>Flipside Pit of 100 Trials</CategoryName>
+  <LayoutPath>C:\Users\justi\OneDrive\Documents\spm pit%.lsl</LayoutPath>
+  <Metadata>
+    <Run id="" />
+    <Platform usesEmulator="False">Wii U</Platform>
+    <Region>JPN / NTSC</Region>
+    <Variables>
+      <Variable name="Platform">Wii / Wii U</Variable>
+      <Variable name="Category">Classic</Variable>
+    </Variables>
+    <CustomVariables />
+  </Metadata>
+  <Offset>00:00:00</Offset>
+  <AttemptCount>30</AttemptCount>
+  <AttemptHistory>
+    <Attempt id="1" started="06/03/2024 13:05:38" isStartedSynced="True" ended="06/03/2024 13:43:11" isEndedSynced="True" />
+    <Attempt id="2" started="06/30/2024 05:49:31" isStartedSynced="True" ended="06/30/2024 07:37:56" isEndedSynced="True">
+      <RealTime>01:48:19.6850234</RealTime>
+    </Attempt>
+    <Attempt id="3" started="07/02/2024 04:36:45" isStartedSynced="True" ended="07/02/2024 06:02:11" isEndedSynced="True" />
+    <Attempt id="4" started="07/16/2024 05:33:39" isStartedSynced="True" ended="07/16/2024 05:33:44" isEndedSynced="True" />
+    <Attempt id="5" started="07/18/2024 22:18:54" isStartedSynced="False" ended="07/18/2024 22:18:56" isEndedSynced="False" />
+    <Attempt id="6" started="07/18/2024 22:21:36" isStartedSynced="True" ended="07/18/2024 23:53:00" isEndedSynced="True" />
+    <Attempt id="7" started="07/24/2024 23:08:21" isStartedSynced="True" ended="07/25/2024 00:52:44" isEndedSynced="True">
+      <RealTime>01:44:22.9836124</RealTime>
+    </Attempt>
+    <Attempt id="8" started="07/25/2024 00:57:03" isStartedSynced="True" ended="07/25/2024 00:57:05" isEndedSynced="True" />
+    <Attempt id="9" started="08/02/2024 19:55:24" isStartedSynced="True" ended="08/02/2024 19:55:26" isEndedSynced="True" />
+    <Attempt id="10" started="08/02/2024 19:55:39" isStartedSynced="True" ended="08/02/2024 19:55:42" isEndedSynced="True" />
+    <Attempt id="11" started="08/02/2024 20:02:24" isStartedSynced="True" ended="08/02/2024 20:02:28" isEndedSynced="True" />
+    <Attempt id="12" started="08/02/2024 20:06:40" isStartedSynced="True" ended="08/02/2024 21:45:43" isEndedSynced="True">
+      <RealTime>01:39:03.8545340</RealTime>
+    </Attempt>
+    <Attempt id="13" started="06/15/2025 23:54:19" isStartedSynced="True" ended="06/15/2025 23:54:22" isEndedSynced="True">
+      <PauseTime>00:00:00.4058630</PauseTime>
+    </Attempt>
+    <Attempt id="14" started="06/15/2025 23:56:30" isStartedSynced="True" ended="06/16/2025 00:06:31" isEndedSynced="True" />
+    <Attempt id="15" started="06/16/2025 03:30:41" isStartedSynced="True" ended="06/16/2025 03:49:31" isEndedSynced="True" />
+    <Attempt id="16" started="06/16/2025 20:01:14" isStartedSynced="True" ended="06/16/2025 20:11:16" isEndedSynced="True" />
+    <Attempt id="17" started="06/16/2025 20:14:04" isStartedSynced="True" ended="06/16/2025 20:24:17" isEndedSynced="True" />
+    <Attempt id="18" started="06/16/2025 20:28:17" isStartedSynced="True" ended="06/16/2025 22:02:11" isEndedSynced="True">
+      <RealTime>01:33:53.7380909</RealTime>
+    </Attempt>
+    <Attempt id="19" started="06/22/2025 23:03:28" isStartedSynced="True" ended="06/23/2025 00:40:14" isEndedSynced="True">
+      <RealTime>01:36:45.2962883</RealTime>
+    </Attempt>
+    <Attempt id="20" started="06/27/2025 15:07:09" isStartedSynced="True" ended="06/27/2025 16:31:08" isEndedSynced="True" />
+    <Attempt id="21" started="10/30/2025 22:52:14" isStartedSynced="True" ended="10/30/2025 22:52:15" isEndedSynced="True" />
+    <Attempt id="22" started="10/30/2025 22:53:09" isStartedSynced="True" ended="10/30/2025 23:07:31" isEndedSynced="True" />
+    <Attempt id="23" started="10/30/2025 23:07:57" isStartedSynced="True" ended="10/30/2025 23:17:52" isEndedSynced="True" />
+  </AttemptHistory>
+  <Segments>
+    <Segment>
+      <Name>Prologe</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:05:47.4434732</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:05:39.5717504</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:05:43.7279234</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="0">
+          <RealTime>00:05:49.5200000</RealTime>
+        </Time>
+        <Time id="1">
+          <RealTime>00:05:50.9039040</RealTime>
+        </Time>
+        <Time id="2">
+          <RealTime>00:05:49.5248320</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:05:48.3438058</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:05:47.6011949</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:05:49.0410211</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:05:48.8461027</RealTime>
+        </Time>
+        <Time id="14">
+          <RealTime>00:05:47.2703595</RealTime>
+        </Time>
+        <Time id="15">
+          <RealTime>00:05:46.3459501</RealTime>
+        </Time>
+        <Time id="16">
+          <RealTime>00:05:48.2317848</RealTime>
+        </Time>
+        <Time id="17">
+          <RealTime>00:05:45.6361519</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:05:47.4434732</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:05:46.6553429</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:05:44.3079902</RealTime>
+        </Time>
+        <Time id="22">
+          <RealTime>00:05:44.1308768</RealTime>
+        </Time>
+        <Time id="23">
+          <RealTime>00:05:43.7279234</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>1-1</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:10:59.3931945</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:10:28.7117273</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:05:06.4752875</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="0">
+          <RealTime>00:05:23.4800000</RealTime>
+        </Time>
+        <Time id="1">
+          <RealTime>00:05:29.6846089</RealTime>
+        </Time>
+        <Time id="2">
+          <RealTime>00:05:13.1070030</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:05:16.7477518</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:05:15.9550681</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:05:18.9461621</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:05:11.4299613</RealTime>
+        </Time>
+        <Time id="15">
+          <RealTime>00:05:13.9106197</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:05:11.9497213</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:05:12.2405701</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:05:09.6094858</RealTime>
+        </Time>
+        <Time id="22">
+          <RealTime>00:05:06.4752875</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>1-2</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:16:12.6378579</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:13:45.4264400</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:05:10.8548530</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="0">
+          <RealTime>00:05:23.3700000</RealTime>
+        </Time>
+        <Time id="1">
+          <RealTime>00:05:26.2574496</RealTime>
+        </Time>
+        <Time id="2">
+          <RealTime>00:05:16.3569987</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:05:18.7946937</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:05:16.3871718</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:05:19.5078818</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:05:17.8974661</RealTime>
+        </Time>
+        <Time id="15">
+          <RealTime>00:05:13.5365306</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:05:13.2446634</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:05:17.9213259</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:05:10.8548530</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>1-3</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:19:52.7754121</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:17:08.2789826</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:03:19.9498445</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="0">
+          <RealTime>00:03:49.0400000</RealTime>
+        </Time>
+        <Time id="1">
+          <RealTime>00:04:25.5172375</RealTime>
+        </Time>
+        <Time id="2">
+          <RealTime>00:03:50.4903523</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:03:53.4391897</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:03:41.5884363</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:04:02.9765597</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:03:32.9750829</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:03:40.1375542</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:03:19.9498445</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:03:22.3730356</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>1-4</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:28:32.2347758</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:24:58.9340369</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:08:19.1146892</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="0">
+          <RealTime>00:09:01.8900000</RealTime>
+        </Time>
+        <Time id="1">
+          <RealTime>00:08:22.0162625</RealTime>
+        </Time>
+        <Time id="2">
+          <RealTime>00:09:16.1811734</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:08:25.1707755</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:08:39.7261689</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:09:11.9131535</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:08:33.9923458</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:08:39.4593637</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:08:26.6469624</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:08:19.1146892</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Pre 2</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:37:15.1251803</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:33:26.9849471</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:08:41.4056218</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="0">
+          <RealTime>00:08:54.7000000</RealTime>
+        </Time>
+        <Time id="2">
+          <RealTime>00:08:51.9293970</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:08:54.0109174</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:08:53.4323288</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:08:51.6801778</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:08:46.9132741</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:08:42.8904045</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:08:42.6008092</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:08:41.4056218</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Boomer</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:41:39.2316895</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:37:36.5926761</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:04:16.1235080</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="0">
+          <RealTime>00:04:20.4200000</RealTime>
+        </Time>
+        <Time id="2">
+          <RealTime>00:04:16.2031677</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:04:16.1235080</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:04:29.2955344</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:04:17.8851091</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:04:16.3752368</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:04:24.1065092</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:04:32.7399445</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:05:06.7445402</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Enter Pit</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:43:07.4705078</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:38:44.0501072</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:01:17.5296460</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="0">
+          <RealTime>00:01:30.1200000</RealTime>
+        </Time>
+        <Time id="2">
+          <RealTime>00:01:25.9965837</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:01:31.1760079</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:01:17.5296460</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:01:33.8168544</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:01:40.4505340</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:01:28.2388183</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:01:31.6601481</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:01:38.9746650</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Room 10</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:46:27.8255444</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:41:41.7688091</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:03:17.0294586</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="0">
+          <RealTime>00:03:39.4600000</RealTime>
+        </Time>
+        <Time id="2">
+          <RealTime>00:04:21.4334305</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:03:55.6779040</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:03:26.4644934</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:03:39.2704248</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:03:40.9762256</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:03:20.3550366</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:03:17.0294586</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:03:21.7735559</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Room 20</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:50:40.9687940</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:44:55.7482960</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:03:44.4403235</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="2">
+          <RealTime>00:05:30.1176366</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:03:44.4403235</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:03:59.9282230</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:04:56.9369180</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:04:55.0955483</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:04:13.1432496</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:04:08.4655200</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:03:50.0001175</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Room 30</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:54:53.4266406</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:48:38.5812219</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:04:12.4578466</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="2">
+          <RealTime>00:05:38.1076913</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:04:12.4872259</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:05:43.2748057</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:04:53.5236962</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:04:51.4165650</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:04:12.4578466</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:05:02.3483983</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:04:19.0342324</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Room 40</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>00:59:44.2628952</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:52:29.4140013</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:03:51.8776702</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="2">
+          <RealTime>00:06:29.4179133</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:05:17.6305181</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:05:58.7731514</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:04:57.5102095</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:03:51.8776702</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:04:50.8362546</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:04:27.9129949</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:04:56.9065970</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Room 50</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>01:04:39.7271653</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>00:56:21.0325208</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:04:55.4642701</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="2">
+          <RealTime>00:08:52.6383031</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:06:16.5687762</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:05:32.7290183</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:06:13.0626403</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:05:42.4963772</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:04:55.4642701</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:06:29.7751811</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:04:59.1045332</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Room 60</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>01:09:23.2218610</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>01:00:07.1493215</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:04:36.3775748</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="2">
+          <RealTime>00:07:09.0972044</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:06:39.2400596</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:06:54.8084256</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:05:22.5969274</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:04:54.5814335</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:04:43.4946957</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:06:41.0666552</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:04:36.3775748</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Room 70</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>01:15:49.4710193</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>01:04:08.4104449</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:04:09.0770588</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="2">
+          <RealTime>00:04:09.0770588</RealTime>
+        </Time>
+        <Time id="3">
+          <RealTime>00:08:10.2272935</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:06:01.8066331</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:07:25.1844841</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:04:58.7742363</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:06:26.2491583</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:04:50.7357327</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:06:29.2362454</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Room 80</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>01:20:06.6742319</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>01:08:38.0361010</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:04:17.2032126</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="2">
+          <RealTime>00:05:51.7333555</RealTime>
+        </Time>
+        <Time id="6">
+          <RealTime>00:05:25.3057437</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:06:31.4028604</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:05:02.1757455</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:04:17.2032126</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:04:37.4320856</RealTime>
+        </Time>
+        <Time id="20">
+          <RealTime>00:04:39.5728858</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Room 90</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>01:24:53.2779650</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>01:13:52.6315584</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:04:40.7432540</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="2">
+          <RealTime>00:07:24.5858758</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:06:05.1158300</RealTime>
+        </Time>
+        <Time id="12" />
+        <Time id="18">
+          <RealTime>00:04:46.6037331</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:04:40.7432540</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Room 99</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>01:30:15.9707520</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>01:17:53.0142312</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:05:10.5602683</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="2">
+          <RealTime>00:05:10.5602683</RealTime>
+        </Time>
+        <Time id="7" />
+        <Time id="12">
+          <RealTime>00:13:48.8549060</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:05:22.6927870</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:06:05.5888795</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+    <Segment>
+      <Name>Win!</Name>
+      <Icon />
+      <SplitTimes>
+        <SplitTime name="Personal Best">
+          <RealTime>01:33:53.7380909</RealTime>
+        </SplitTime>
+        <SplitTime name="SacredGhost">
+          <RealTime>01:21:13.0214177</RealTime>
+        </SplitTime>
+        <SplitTime name="World record by" />
+        <SplitTime name="a" />
+      </SplitTimes>
+      <BestSegmentTime>
+        <RealTime>00:03:33.7831808</RealTime>
+      </BestSegmentTime>
+      <SegmentHistory>
+        <Time id="2">
+          <RealTime>00:03:43.1267780</RealTime>
+        </Time>
+        <Time id="7">
+          <RealTime>00:09:52.6127022</RealTime>
+        </Time>
+        <Time id="12">
+          <RealTime>00:04:08.7258227</RealTime>
+        </Time>
+        <Time id="18">
+          <RealTime>00:03:37.7673389</RealTime>
+        </Time>
+        <Time id="19">
+          <RealTime>00:03:33.7831808</RealTime>
+        </Time>
+      </SegmentHistory>
+    </Segment>
+  </Segments>
+  <AutoSplitterSettings />
+</Run>

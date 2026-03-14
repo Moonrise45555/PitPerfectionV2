@@ -27,17 +27,21 @@ start_date = dt(2,1,1)
 end_date = dt.now()
 
 
-players = os.listdir("./splits/")
+players = os.listdir(sw.splits_path)
 
 all_players = deepcopy(players)
 
-types = ["Boomerless", "Classic", "Lite", "APNT"]
+types = [sw.PitType.BOOMERLESS, sw.PitType.CLASSIC,sw.PitType.PIXLLESS]
 
 all_types = ["Boomerless", "Classic", "Lite", "Pixlless", "APNT"]
 
 runs : list[sw.Run] = []
 
 runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
+
+
+ctx = sw.RunContext("Moonrise45555", sw.PitType.PIXLLESS, sw.CategoryLength.FULL, sw.SplitDetail.MERGED)
+
 
 
 
@@ -89,7 +93,7 @@ while True:
         elif inp[1] == "remove":
             for p in inp[2:]:
                 try:
-                    types.remove(p)
+                    pass
                 except:
                     print(f"{p} not found.")
         
@@ -138,6 +142,19 @@ while True:
 
             print(sw.pad_to_length(sw.split_names[r], 5), descriptor)
         print("Sum: ", str(sw.sum_td([best_segments_runs[i].segment_times[i] for i in range(11)]))[:-4])
+
+    if inp[0] == "run":
+        id = int(inp[1])
+
+        run : sw.Run = runs[0]
+        for r in runs:
+            if r.db_id == id:
+                run = r
+                break
+        
+        sw.print_run_details(run)
+
+
 
 
 
