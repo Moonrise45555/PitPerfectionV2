@@ -20,7 +20,7 @@ except:
 
 
 #aliases = {"PTL1667" : "kora20_", "KoraFloof" : "kora20_", "vVanity485" : "Vanity485", "DiamondcrafterA" : "LunaEclipse_4"}
-blacklisted_players = ["savetheseasponges", "SwayNC", "PTL1667", "vVanity485", "DiamondCrafterA", "JCRRiles", "samlilwall06"] #blacklisted for splitting abnormally or for being an alias of another player
+blacklisted_players = ["savetheseasponges", "SwayNC", "PTL1667", "vVanity485", "DiamondcrafterA", "JCRRiles", "samlilwall06", "KoraFloof"] #blacklisted for splitting abnormally or for being an alias of another player
 
 
 type_from_cat_name = {"flipside pit of 100 trials" : sw.PitType.INVALID, 
@@ -94,14 +94,21 @@ cat_names = ["flipside pit of 100 trials",
 
 
 games_urls = ["https://api.therun.gg/games/Super%20Paper%20Mario%20Category%20Extensions","https://api.therun.gg/games/SPM%20Category%20Extensions?q=SPM%2520category%2520extensions", 'https://api.therun.gg/games/Super%20Paper%20Mario']
+delay = 0
+while True:
+    try:
+        games_pages = [requests.get(u) for u in games_urls]
+        break
+    except:
+        sleep(delay)
+        delay += 1
 
-games_pages = [requests.get(u) for u in games_urls]
 
 
 lbs = [g.json()["result"]["stats"]["categoryLeaderboards"] for g in games_pages]
 
 found_players = []
-found_split_names : list[tuple[sw.RunContext, str]] = []
+found_split_names : list[tuple[sw.RunContext, str, dt.datetime]] = []
 
 
 def ctx_from_cat_name(player, str):
@@ -120,7 +127,13 @@ for l in lbs:
 root = []
 for p_name in found_players:
     print("searching through", p_name)
-    root = requests.get("https://api.therun.gg/users/" + p_name).json()["result"]
+    while(True):
+        try:
+            root = requests.get("https://api.therun.gg/users/" + p_name).json()["result"]
+            break
+        except:
+            sleep(delay)
+            delay += 1
     for cat in root:
         category_name : str = cat["displayRun"].split('#')[1].lower()
         print(category_name)
@@ -145,19 +158,25 @@ for p_name in found_players:
 
 
 
-            if crnt_latest == None or crnt_latest.time_ended.replace(tzinfo=None) < (last_session_time - dt.timedelta(days=1)).replace(tzinfo=None):
-                found_split_names.append((ctx, cat["splitsFile"]))
+            if crnt_latest == None or crnt_latest.time_ended.replace(tzinfo=None) < (last_session_time).replace(tzinfo=None):
+                found_split_names.append((ctx, cat["splitsFile"], last_session_time))
 
 
 #generate folders for each player
 for p in found_players:
-    Path("./splitstherun/" + p + "/").mkdir(parents=True,exist_ok=True)
+    Path(sw.splits_path + p + "/").mkdir(parents=True,exist_ok=True)
 
 for f in found_split_names:
     #download the file
-    sleep(10)
+    sleep(1)
     print("downloading " + f[1])
-    urllib.request.urlretrieve("https://d2c9jb6sm40v74.cloudfront.net/" + f[1], "work_splits.lss")
+    while(True):
+        try:
+            urllib.request.urlretrieve("https://d2c9jb6sm40v74.cloudfront.net/" + f[1], "work_splits.lss")
+            break
+        except:
+            sleep(delay)
+            delay += 2
     ctx = f[0]
 
     #get current latest run
@@ -168,16 +187,31 @@ for f in found_split_names:
     if ctx.pit_type == sw.PitType.INVALID:
         ctx = sw.guess_context_from_runs(ctx.player, runs)
 
-    
+    print("crnt ctx:", ctx.player, file_name_from_ctx(ctx))
 
-    
-    dest_path = "./splitstherun/" + ctx.player + "/" + file_name_from_ctx(ctx)
+    print("last therun session:", f[2])
 
-    if os.path.exists(dest_path):
-        os.remove(dest_path)
+    new_latest = sw.get_latest_run_in_splits("./work_splits.lss").time_ended
+    crnt_latest = db.get_latest_run_in_context(cur, ctx)
 
-    print("added " + dest_path + "!!!")
-    os.rename("./work_splits.lss", dest_path)
+    if crnt_latest != None:
+        print("crnt_latest:", crnt_latest.time_ended)
+    else:
+        print("no crnt latest!")
+    print("new_latest:", new_latest)
+
+    print("new_latest_modified: ", (new_latest - dt.timedelta(hours=2)))
+    if crnt_latest == None or crnt_latest.time_ended.replace(tzinfo=None) < (new_latest - dt.timedelta(hours=2)).replace(tzinfo=None):
+        dest_path = sw.splits_path + ctx.player + "/" + file_name_from_ctx(ctx)
+
+        if os.path.exists(dest_path):
+            os.remove(dest_path)
+
+        print("added " + dest_path + "!!!")
+        os.rename("./work_splits.lss", dest_path)
+    else:
+        print("did not add")
+    print("\n")
 
 db.regenerate_database()
     

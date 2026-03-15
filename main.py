@@ -31,7 +31,7 @@ players = os.listdir(sw.splits_path)
 
 all_players = deepcopy(players)
 
-types = [sw.PitType.BOOMERLESS, sw.PitType.CLASSIC,sw.PitType.PIXLLESS]
+types = [sw.PitType.BOOMERLESS, sw.PitType.CLASSIC, sw.PitType.PIXLLESS]
 
 all_types = ["Boomerless", "Classic", "Lite", "Pixlless", "APNT"]
 
@@ -132,7 +132,7 @@ while True:
 
                 
             for r in runs:
-                if r.is_trustworthy_segment(i) and r.segment_times[i] < found_min.segment_times[i]:
+                if r.is_trustworthy_segment(i) and r.segment_times[i] < found_min.segment_times[i]: # type: ignore
                     found_min = r
             best_segments_runs.append(found_min)
 
@@ -146,13 +146,15 @@ while True:
     if inp[0] == "run":
         id = int(inp[1])
 
-        run : sw.Run = runs[0]
-        for r in runs:
-            if r.db_id == id:
-                run = r
-                break
+        run : sw.Run = db.get_run_with_id(cur, id)
         
         sw.print_run_details(run)
+
+    if inp[0] == "regen":
+        db.regenerate_database()
+        runs = db.get_all_runs(cur)
+
+    
 
 
 
@@ -184,7 +186,7 @@ while True:
                 to_remove = []
                 for run in relevant_runs_sorted:
     
-                    player = run.player
+                    player = run.get_player()
 
                     if player in seen_players:
                         to_remove.append(run)
@@ -205,6 +207,33 @@ while True:
 
                 run = relevant_runs_sorted[i]
                 print(sw.pad_to_length(f"{i+1}.", 4),sw.get_run_descriptor(run))
+
+    if inp[0] == "blacklist":
+        for i in inp[1:]:
+            db.add_to_blacklist(cur, db.get_run_with_id(cur, int(i)))
+        con.commit()
+
+    if inp[0] == "integrity":
+        start, end = sw.get_range_from_str(inp[1])
+        min_length = (end - start) * td(minutes=2)
+        relevant_runs = sw.limit_to_range(inp[1], runs)
+        for r in relevant_runs:
+            if r.get_final_time() < min_length: # type: ignore
+                db.add_to_blacklist(cur, r)
+                print("added " + str(r.db_id) + " by " + r.get_player() + " to blacklist")
+        con.commit()
+    
+    if inp[0] == "progression":
+        relevant_runs = sw.get_segment_ranges_as_runs(runs, inp[1])
+
+        prog = sw.get_wr_progression(relevant_runs)
+
+        for p in prog:
+            print(sw.get_run_descriptor(p))
+
+
+
+
         
                 
 

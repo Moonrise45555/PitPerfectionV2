@@ -8,9 +8,9 @@ import sys
 import os
 import dataclasses
 from enum import StrEnum
-
-splits_path = "./splitstherun/"
-split_names = [" 0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "90-99", "100  "]
+from typing import cast, List, Tuple
+splits_path = "./splits/"
+split_names = ["0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "90-99", "100"]
 
 lengths_from_filesnames = []
 
@@ -24,6 +24,7 @@ class PitType(StrEnum):
 class CategoryLength(StrEnum):
     FULL = "Full"
     LITE = "Lite"
+    APNT = "APNT"
 
 class SplitDetail(StrEnum):
     SPLIT = "Split"
@@ -37,7 +38,7 @@ def sum_td(list):
     return total
 
 type_from_name = {"boomerless" : PitType.BOOMERLESS, "classic" : PitType.CLASSIC, "pixlless" : PitType.PIXLLESS}
-length_from_name = {"lite" : CategoryLength.LITE, "full" : CategoryLength.FULL}
+length_from_name = {"lite" : CategoryLength.LITE, "full" : CategoryLength.FULL, "apnt" : CategoryLength.APNT}
 split_detail_from_name = {"split" : SplitDetail.SPLIT, "merged" : SplitDetail.MERGED}
 
 
@@ -147,7 +148,7 @@ def copy_run_with_new_segments(r, segments : list[td|None]):
 def get_lite_runs(classic_runs : list[Run]):
     cut_runs = []
     for r in classic_runs:
-        if r.get_pit_type() == "APNT":
+        if r.get_category_length() == CategoryLength.APNT:
             new_segments = r.segment_times[11:22]
         else:
             new_segments = r.segment_times[-11:]
@@ -675,15 +676,46 @@ def get_run_descriptor(run : Run):
 
     player = pad_to_length(run.get_player(), 15)
 
-    type = pad_to_length(run.get_pit_type(), 15)
+    type = pad_to_length(run.get_pit_type(), 12)
 
 
-    return f"{time}  {player}  {run.time_started}  {type}   id {run.db_id}"
+    return f"{time}  {player}  {run.time_started}  {type} {run.get_category_length()}   id {run.db_id}"
 
 def print_run_details(run : Run):
     print(get_run_descriptor(run))
 
+    print(" ", end="")
     for s in range(len(split_names)):
-        print(split_names[s], run.get_segment_time(s), run.get_split_time(s)) 
+        print(split_names[s], pad_to_length(str(run.get_segment_time(s))[:-4], 10), pad_to_length(str(run.get_split_time(s))[:-4], 10)) 
 
 
+def get_segment_ranges_as_runs(runs, range):
+
+    relevant_runs = limit_to_range(range, runs)
+    
+    runs_with_final_times = [(r,r.get_final_time()) for r in relevant_runs if r.get_final_time() != None] 
+    #stupid annoying    
+    runs_with_final_times = cast(List[Tuple[Run, td]], runs_with_final_times)
+    runs_with_final_times.sort(key=lambda x: x[1])
+    relevant_runs_sorted = [r[0] for r in runs_with_final_times]
+
+    return relevant_runs_sorted
+
+def get_wr_progression(runs : List[Run]):
+    prog_entries = []
+    crnt_wr = td.min
+    crnt_date = dt.now()
+
+    for r in runs:
+        time = r.get_final_time()
+
+        if time > crnt_wr and crnt_date > r.time_started: # type: ignore
+            prog_entries.append(r)
+            crnt_wr = r.get_final_time()
+            crnt_date = r.time_started
+    
+    return reversed(prog_entries)
+
+
+
+    

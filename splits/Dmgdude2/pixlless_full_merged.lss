@@ -36,6 +36,7 @@
       <PauseTime>00:03:12.8576589</PauseTime>
     </Attempt>
     <Attempt id="9" started="04/05/2025 16:14:45" isStartedSynced="True" ended="04/05/2025 17:26:41" isEndedSynced="True" />
+    <Attempt id="10" started="04/05/2025 17:28:03" isStartedSynced="True" ended="04/05/2025 17:36:56" isEndedSynced="True" />
     <Attempt id="11" started="04/05/2025 23:26:16" isStartedSynced="False" ended="04/06/2025 00:31:40" isEndedSynced="True" />
     <Attempt id="12" started="04/06/2025 00:44:43" isStartedSynced="True" ended="04/06/2025 01:54:43" isEndedSynced="True" />
     <Attempt id="13" started="04/06/2025 14:36:34" isStartedSynced="True" ended="04/06/2025 16:11:04" isEndedSynced="True">
@@ -491,6 +492,9 @@
         <Time id="5">
           <RealTime>00:05:46.2728445</RealTime>
         </Time>
+        <Time id="13">
+          <RealTime>00:00:33.6961023</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -506,7 +510,7 @@
       </BestSegmentTime>
       <SegmentHistory>
         <Time id="13">
-          <RealTime>00:14:27.4581987</RealTime>
+          <RealTime>00:13:57.4581987</RealTime>
         </Time>
       </SegmentHistory>
     </Segment>
