@@ -24,7 +24,7 @@ def delete_duplicates(cur):
     WHERE id NOT IN ( \
     SELECT MIN(id) \
     FROM runs \
-    GROUP BY player, pit_type , category_type, split_detail, time_started, time_ended, livesplit_id, "0s", "10s", "20s", "30s", "40s", "50s", "60s", "70s", "80s", "90s", "100" \
+    GROUP BY player, time_started, time_ended, "0s", "10s", "20s", "30s", "40s", "50s", "60s", "70s", "80s", "90s", "100" \
     );""")
 
 def regenerate_database():

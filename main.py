@@ -105,15 +105,6 @@ while True:
 
         runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
 
-    if inp[0] == "gold":
-        pb = sw.get_pb(sw.limit_to_range(inp[1], runs))
-
-        if pb == None:
-            print("no pb found")
-            continue
-    
-        print(sw.get_run_descriptor(pb))
-
     if inp[0] == "comsob":
         best_segments_runs = []
 
@@ -164,7 +155,7 @@ while True:
 
     if inp[0] == "rank":
 
-        if inp[1] == "times" or inp[1] == "golds" or inp[1] == "averages":
+        if inp[1] == "times" or inp[1] == "golds" or inp[1] == "count":
             ranges = inp[2]
 
             relevant_runs = sw.limit_to_range(ranges, runs)
@@ -196,6 +187,31 @@ while True:
                     
                 for t in to_remove:
                     relevant_runs_sorted.remove(t)
+
+            if inp[1] == "count":
+
+                relevant_runs_sorted = relevant_runs_sorted[:int(inp[3])]
+                found_playtimes = [0.0 for i in players]
+
+                for p in range(len(players)):
+                    for r in relevant_runs_sorted:
+
+                        if r.get_player() == players[p]:
+                            found_playtimes[p] += 1.0
+
+                
+                amnt = 20
+
+                merged = [(players[i] ,found_playtimes[i]) for i in range(len(players))]
+
+
+
+                merged.sort(key=lambda x: x[1], reverse=True)
+
+                for i in range(min(amnt, len(players))):
+
+                    print(f"{i + 1}. {sw.pad_to_length(merged[i][0], 15)}   {merged[i][1]}    {round((merged[i][1] / len(relevant_runs_sorted) ) * 100, 1)}%")
+                continue
             
             if len(inp) == 3:
                 size = 20
@@ -207,6 +223,20 @@ while True:
 
                 run = relevant_runs_sorted[i]
                 print(sw.pad_to_length(f"{i+1}.", 4),sw.get_run_descriptor(run))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     if inp[0] == "blacklist":
         for i in inp[1:]:
@@ -230,6 +260,34 @@ while True:
 
         for p in prog:
             print(sw.get_run_descriptor(p))
+
+
+    if inp[0] == "playtime":
+        if inp[1] == "players":
+            found_playtimes = [td(0) for i in players]
+
+            for p in range(len(players)):
+                for r in runs:
+
+                    if r.get_player() == players[p]:
+                        found_playtimes[p] += sw.sum_td(r.segment_times)
+
+            amnt = int(inp[2])
+
+            merged = [(players[i] ,found_playtimes[i]) for i in range(len(players))]
+
+            
+
+            merged.sort(key=lambda x: x[1], reverse=True)
+
+            for i in range(min(amnt, len(players))):
+                
+                print(f"{i + 1}. {sw.pad_to_length(merged[i][0], 15)}   {merged[i][1]}")
+
+            
+
+
+    
 
 
 

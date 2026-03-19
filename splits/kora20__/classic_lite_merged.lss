@@ -16,7 +16,7 @@
     <CustomVariables />
   </Metadata>
   <Offset>00:00:00</Offset>
-  <AttemptCount>67</AttemptCount>
+  <AttemptCount>79</AttemptCount>
   <AttemptHistory>
     <Attempt id="1" started="02/19/2026 21:29:08" isStartedSynced="True" ended="02/19/2026 21:29:45" isEndedSynced="True" />
     <Attempt id="2" started="02/19/2026 21:31:52" isStartedSynced="True" ended="02/19/2026 22:13:54" isEndedSynced="True">
@@ -104,6 +104,26 @@
     <Attempt id="66" started="03/14/2026 03:36:13" isStartedSynced="True" ended="03/14/2026 03:36:48" isEndedSynced="True" />
     <Attempt id="67" started="03/14/2026 03:37:32" isStartedSynced="True" ended="03/14/2026 04:02:20" isEndedSynced="True" />
     <Attempt id="68" started="03/14/2026 04:02:51" isStartedSynced="True" ended="03/14/2026 04:14:00" isEndedSynced="True" />
+    <Attempt id="69" started="03/15/2026 00:07:16" isStartedSynced="True" ended="03/15/2026 00:23:37" isEndedSynced="True" />
+    <Attempt id="70" started="03/15/2026 00:57:30" isStartedSynced="True" ended="03/15/2026 00:57:39" isEndedSynced="True" />
+    <Attempt id="71" started="03/15/2026 01:03:01" isStartedSynced="True" ended="03/15/2026 01:44:04" isEndedSynced="True">
+      <RealTime>00:41:03.2163803</RealTime>
+    </Attempt>
+    <Attempt id="72" started="03/15/2026 01:50:36" isStartedSynced="True" ended="03/15/2026 02:27:56" isEndedSynced="True" />
+    <Attempt id="73" started="03/16/2026 23:51:08" isStartedSynced="True" ended="03/17/2026 00:25:39" isEndedSynced="True" />
+    <Attempt id="74" started="03/17/2026 01:11:17" isStartedSynced="False" ended="03/17/2026 01:21:21" isEndedSynced="True" />
+    <Attempt id="75" started="03/17/2026 01:21:32" isStartedSynced="True" ended="03/17/2026 01:39:56" isEndedSynced="True" />
+    <Attempt id="76" started="03/17/2026 23:09:14" isStartedSynced="True" ended="03/17/2026 23:50:29" isEndedSynced="True">
+      <RealTime>00:41:15.1412642</RealTime>
+    </Attempt>
+    <Attempt id="77" started="03/18/2026 00:02:29" isStartedSynced="True" ended="03/18/2026 00:37:19" isEndedSynced="True" />
+    <Attempt id="78" started="03/18/2026 00:42:32" isStartedSynced="True" ended="03/18/2026 01:23:16" isEndedSynced="True">
+      <RealTime>00:40:44.5620269</RealTime>
+    </Attempt>
+    <Attempt id="79" started="03/19/2026 01:07:58" isStartedSynced="False" ended="03/19/2026 01:14:22" isEndedSynced="True" />
+    <Attempt id="80" started="03/19/2026 01:19:24" isStartedSynced="True" ended="03/19/2026 02:01:22" isEndedSynced="True">
+      <RealTime>00:41:58.6348858</RealTime>
+    </Attempt>
   </AttemptHistory>
   <Segments>
     <Segment>
@@ -114,7 +134,10 @@
           <RealTime>00:02:41.9425941</RealTime>
         </SplitTime>
         <SplitTime name="COMSOB">
-          <RealTime>00:02:19.0170000</RealTime>
+          <RealTime>00:02:19.0200000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:03:06.1330000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
@@ -178,6 +201,37 @@
         <Time id="68">
           <RealTime>00:02:51.1773437</RealTime>
         </Time>
+        <Time id="69">
+          <RealTime>00:02:22.7581562</RealTime>
+        </Time>
+        <Time id="71" />
+        <Time id="72">
+          <RealTime>00:03:09.1891893</RealTime>
+        </Time>
+        <Time id="73">
+          <RealTime>00:03:01.0359130</RealTime>
+        </Time>
+        <Time id="74">
+          <RealTime>00:03:18.1311305</RealTime>
+        </Time>
+        <Time id="75">
+          <RealTime>00:02:48.5454579</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:02:49.6365890</RealTime>
+        </Time>
+        <Time id="77">
+          <RealTime>00:02:53.7481205</RealTime>
+        </Time>
+        <Time id="78">
+          <RealTime>00:02:53.5444970</RealTime>
+        </Time>
+        <Time id="79">
+          <RealTime>00:03:03.9076553</RealTime>
+        </Time>
+        <Time id="80">
+          <RealTime>00:03:04.2872178</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -189,6 +243,9 @@
         </SplitTime>
         <SplitTime name="COMSOB">
           <RealTime>00:04:52.7200000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:06:27.9500000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
@@ -240,6 +297,36 @@
         <Time id="68">
           <RealTime>00:03:19.1966986</RealTime>
         </Time>
+        <Time id="69">
+          <RealTime>00:03:37.3187693</RealTime>
+        </Time>
+        <Time id="71">
+          <RealTime>00:06:52.4204038</RealTime>
+        </Time>
+        <Time id="72">
+          <RealTime>00:03:25.5031148</RealTime>
+        </Time>
+        <Time id="73">
+          <RealTime>00:03:47.5612606</RealTime>
+        </Time>
+        <Time id="74">
+          <RealTime>00:03:17.3907181</RealTime>
+        </Time>
+        <Time id="75">
+          <RealTime>00:03:16.9833047</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:03:04.2457310</RealTime>
+        </Time>
+        <Time id="77">
+          <RealTime>00:03:12.0729059</RealTime>
+        </Time>
+        <Time id="78">
+          <RealTime>00:03:46.4311810</RealTime>
+        </Time>
+        <Time id="80">
+          <RealTime>00:03:53.3081711</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -251,6 +338,9 @@
         </SplitTime>
         <SplitTime name="COMSOB">
           <RealTime>00:07:49.7300000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:09:34.2500000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
@@ -293,6 +383,33 @@
         <Time id="68">
           <RealTime>00:04:28.5956920</RealTime>
         </Time>
+        <Time id="69">
+          <RealTime>00:04:22.9864367</RealTime>
+        </Time>
+        <Time id="71">
+          <RealTime>00:04:20.1706824</RealTime>
+        </Time>
+        <Time id="72">
+          <RealTime>00:04:08.3630654</RealTime>
+        </Time>
+        <Time id="73">
+          <RealTime>00:03:38.9015325</RealTime>
+        </Time>
+        <Time id="75">
+          <RealTime>00:03:27.8611747</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:03:24.4805542</RealTime>
+        </Time>
+        <Time id="77">
+          <RealTime>00:04:20.6058454</RealTime>
+        </Time>
+        <Time id="78">
+          <RealTime>00:03:52.6352052</RealTime>
+        </Time>
+        <Time id="80">
+          <RealTime>00:04:20.5334587</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -303,7 +420,10 @@
           <RealTime>00:13:16.6223720</RealTime>
         </SplitTime>
         <SplitTime name="COMSOB">
-          <RealTime>00:10:36.7900000</RealTime>
+          <RealTime>00:10:32.6500000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:13:00.6330000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
@@ -340,6 +460,33 @@
         <Time id="67">
           <RealTime>00:04:25.6626462</RealTime>
         </Time>
+        <Time id="69">
+          <RealTime>00:03:12.6597358</RealTime>
+        </Time>
+        <Time id="71">
+          <RealTime>00:03:25.7128689</RealTime>
+        </Time>
+        <Time id="72">
+          <RealTime>00:03:43.0294726</RealTime>
+        </Time>
+        <Time id="73">
+          <RealTime>00:03:54.9732981</RealTime>
+        </Time>
+        <Time id="75">
+          <RealTime>00:03:12.7185155</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:03:47.4835114</RealTime>
+        </Time>
+        <Time id="77">
+          <RealTime>00:04:03.3120062</RealTime>
+        </Time>
+        <Time id="78">
+          <RealTime>00:03:25.7177381</RealTime>
+        </Time>
+        <Time id="80">
+          <RealTime>00:04:27.8304464</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -350,7 +497,10 @@
           <RealTime>00:17:16.4838074</RealTime>
         </SplitTime>
         <SplitTime name="COMSOB">
-          <RealTime>00:13:23.4300000</RealTime>
+          <RealTime>00:13:19.2800000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:16:19.2170000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
@@ -387,6 +537,30 @@
         <Time id="67">
           <RealTime>00:04:29.0866324</RealTime>
         </Time>
+        <Time id="71">
+          <RealTime>00:04:03.8989330</RealTime>
+        </Time>
+        <Time id="72">
+          <RealTime>00:04:23.1481336</RealTime>
+        </Time>
+        <Time id="73">
+          <RealTime>00:04:05.3513821</RealTime>
+        </Time>
+        <Time id="75">
+          <RealTime>00:04:16.9582132</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:04:47.4525092</RealTime>
+        </Time>
+        <Time id="77">
+          <RealTime>00:04:30.7197658</RealTime>
+        </Time>
+        <Time id="78">
+          <RealTime>00:03:23.7057471</RealTime>
+        </Time>
+        <Time id="80">
+          <RealTime>00:03:41.2311088</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -397,7 +571,10 @@
           <RealTime>00:20:26.9250520</RealTime>
         </SplitTime>
         <SplitTime name="COMSOB">
-          <RealTime>00:16:16.9300000</RealTime>
+          <RealTime>00:16:10.2200000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:19:56.1330000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
@@ -434,6 +611,27 @@
         <Time id="67">
           <RealTime>00:03:10.5820483</RealTime>
         </Time>
+        <Time id="71">
+          <RealTime>00:03:38.0844705</RealTime>
+        </Time>
+        <Time id="72">
+          <RealTime>00:03:35.9951697</RealTime>
+        </Time>
+        <Time id="73">
+          <RealTime>00:03:44.8380524</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:04:33.1876454</RealTime>
+        </Time>
+        <Time id="77">
+          <RealTime>00:04:06.1710241</RealTime>
+        </Time>
+        <Time id="78">
+          <RealTime>00:03:53.8331762</RealTime>
+        </Time>
+        <Time id="80">
+          <RealTime>00:03:20.8574861</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -444,7 +642,10 @@
           <RealTime>00:24:16.2512612</RealTime>
         </SplitTime>
         <SplitTime name="COMSOB">
-          <RealTime>00:19:14.3100000</RealTime>
+          <RealTime>00:19:07.6000000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:23:55.8500000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
@@ -478,6 +679,27 @@
         <Time id="57">
           <RealTime>00:03:54.5219515</RealTime>
         </Time>
+        <Time id="71">
+          <RealTime>00:03:54.2821363</RealTime>
+        </Time>
+        <Time id="72">
+          <RealTime>00:03:44.0484413</RealTime>
+        </Time>
+        <Time id="73">
+          <RealTime>00:04:39.1937722</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:03:26.1864918</RealTime>
+        </Time>
+        <Time id="77">
+          <RealTime>00:04:06.5730244</RealTime>
+        </Time>
+        <Time id="78">
+          <RealTime>00:04:09.8551901</RealTime>
+        </Time>
+        <Time id="80">
+          <RealTime>00:04:30.5052313</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -488,7 +710,10 @@
           <RealTime>00:27:26.5177637</RealTime>
         </SplitTime>
         <SplitTime name="COMSOB">
-          <RealTime>00:21:51.9400000</RealTime>
+          <RealTime>00:21:45.2300000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:27:03.9670000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
@@ -522,6 +747,27 @@
         <Time id="57">
           <RealTime>00:03:34.5545669</RealTime>
         </Time>
+        <Time id="71">
+          <RealTime>00:03:09.1421945</RealTime>
+        </Time>
+        <Time id="72">
+          <RealTime>00:03:57.9814185</RealTime>
+        </Time>
+        <Time id="73">
+          <RealTime>00:04:37.1147172</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:04:21.9757653</RealTime>
+        </Time>
+        <Time id="77">
+          <RealTime>00:03:48.3276216</RealTime>
+        </Time>
+        <Time id="78">
+          <RealTime>00:03:55.4921295</RealTime>
+        </Time>
+        <Time id="80">
+          <RealTime>00:03:34.5344981</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -532,7 +778,10 @@
           <RealTime>00:32:19.2099291</RealTime>
         </SplitTime>
         <SplitTime name="COMSOB">
-          <RealTime>00:24:57.9400000</RealTime>
+          <RealTime>00:24:51.2300000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:31:52.1670000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
@@ -563,6 +812,21 @@
         <Time id="57">
           <RealTime>00:03:53.9485163</RealTime>
         </Time>
+        <Time id="71">
+          <RealTime>00:04:22.5126490</RealTime>
+        </Time>
+        <Time id="72">
+          <RealTime>00:04:40.0193416</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:04:27.1447287</RealTime>
+        </Time>
+        <Time id="78">
+          <RealTime>00:04:49.2385976</RealTime>
+        </Time>
+        <Time id="80">
+          <RealTime>00:04:40.0156937</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -573,7 +837,10 @@
           <RealTime>00:36:06.6710994</RealTime>
         </SplitTime>
         <SplitTime name="COMSOB">
-          <RealTime>00:27:29.8500000</RealTime>
+          <RealTime>00:27:23.1400000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:35:09.6830000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
@@ -599,6 +866,16 @@
         <Time id="57">
           <RealTime>00:04:56.8326708</RealTime>
         </Time>
+        <Time id="71">
+          <RealTime>00:04:01.9365599</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:03:23.2168288</RealTime>
+        </Time>
+        <Time id="78" />
+        <Time id="80">
+          <RealTime>00:03:16.5185739</RealTime>
+        </Time>
       </SegmentHistory>
     </Segment>
     <Segment>
@@ -609,11 +886,14 @@
           <RealTime>00:39:32.3591830</RealTime>
         </SplitTime>
         <SplitTime name="COMSOB">
-          <RealTime>00:30:39.0300000</RealTime>
+          <RealTime>00:30:31.5800000</RealTime>
+        </SplitTime>
+        <SplitTime name="Pit WR">
+          <RealTime>00:38:24.9670000</RealTime>
         </SplitTime>
       </SplitTimes>
       <BestSegmentTime>
-        <RealTime>00:03:10.6080000</RealTime>
+        <RealTime>00:03:09.0129999</RealTime>
       </BestSegmentTime>
       <SegmentHistory>
         <Time id="0">
@@ -645,6 +925,18 @@
         </Time>
         <Time id="57">
           <RealTime>00:03:11.3475593</RealTime>
+        </Time>
+        <Time id="71">
+          <RealTime>00:03:15.0554820</RealTime>
+        </Time>
+        <Time id="76">
+          <RealTime>00:03:10.1309094</RealTime>
+        </Time>
+        <Time id="78">
+          <RealTime>00:06:34.1085651</RealTime>
+        </Time>
+        <Time id="80">
+          <RealTime>00:03:09.0129999</RealTime>
         </Time>
       </SegmentHistory>
     </Segment>
