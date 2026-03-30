@@ -50,11 +50,11 @@ player add/remove/clear/all
 
 type add/remove/clear/all
   removes, adds, clears, or fills the list of pit types which are evaluted.
-  example: type add boomerless, type remove pixlless, type remove classic, type all
+  example: type add Boomerless, type remove Pixlless, type remove Classic, type all
 
 length add/remove/clear/all
   removes, adds, clears, or fills the list of length categories which are evaluted.
-  example: length add lite, length remove full, length clear, length all
+  example: length add Lite, length remove Full, length clear, length all
 
 WIP Commands, technically work but unstable, somewhat untrustworthy, ugly, probably should be evacuated to a more modular system
 

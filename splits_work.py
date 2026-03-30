@@ -31,6 +31,7 @@ class SplitDetail(StrEnum):
     MERGED = "Merged"
 
 def sum_td(list):
+    """Sums the times in the list, ignores None"""
     total = td(0)
     for i in list:
         if i != None:
@@ -189,6 +190,7 @@ def guess_context_from_runs(player, runs):
 
 
 def get_livesplit_ids(root):
+    """used for the run construction process"""
     ids = []
     attempt_history = root[7]
     for atmpt in attempt_history:
@@ -199,6 +201,7 @@ def get_livesplit_ids(root):
     return ids
 
 def get_segment_time(segment, id):
+    """used for the run construction process"""
     format_code = "%H:%M:%S.%f"
     #searches for the id of the chosen run within the segment
     s_history= segment[4]
@@ -224,6 +227,7 @@ def get_segment_time(segment, id):
 
 
 def get_runs(path, ctx):
+    """gets all the runs in a certain splt file"""
     tree = ET.parse(path)
     root = tree.getroot()
 
@@ -271,7 +275,7 @@ def assign_ids(runs : list[Run]):
 
 
 def skipped(seg_ind, segments, run_id):
-    
+    """used for the run construction process"""
     for i in segments[seg_ind][4]:
         if i.attrib["id"] == run_id:
             
@@ -280,6 +284,7 @@ def skipped(seg_ind, segments, run_id):
     return True
 
 def valid_segment(seg_ind, segments, time):
+    """used for the run construction process"""
     #takes in Time object, not a timedelta!
     run_id = time.attrib["id"]
     if skipped(seg_ind, segments, run_id):
@@ -313,7 +318,7 @@ def binary_search(num, list):
         
             
 def get_run_date(run_id, attempt_history):
-
+    """used for the run construction process"""
     id_list = [int(i.attrib["id"]) for i in attempt_history]
     index = binary_search(run_id, id_list)
     if index == -2:
@@ -323,7 +328,7 @@ def get_run_date(run_id, attempt_history):
     return dt.strptime(date_str, "%m/%d/%Y %H:%M:%S")
 
 def get_run_ended(run_id, attempt_history):
-
+    """used for the run construction process"""
     id_list = [int(i.attrib["id"]) for i in attempt_history]
     index = binary_search(run_id, id_list)
     if index == -2:
@@ -335,6 +340,7 @@ def get_run_ended(run_id, attempt_history):
 
 
 def get_times_from_segment(seg_ind, root, start_date = dt(2,1,1), end_date = dt.now()) -> list[td]:
+    """used for the run construction process"""
     segments = root[8]
     format_code = "%H:%M:%S.%f"
     w_segment = segments[seg_ind]
@@ -364,7 +370,7 @@ def get_times_from_segment(seg_ind, root, start_date = dt(2,1,1), end_date = dt.
     return times
 
 def get_pb(runs : list[Run]):
-
+    """returns the run with the best final time"""
     pb = None
     min_final_time = td(99999)
     for r in runs:
@@ -388,6 +394,7 @@ from math import inf
 
 
 def get_average_run(runs : list[Run]) -> list[td|None]:
+    """returns a list with the average of each segment"""
     segments = [td(0,0,0) for i in range(len(runs[0].segment_times))]
     for i in range(len(segments)):
         s_times = [j.segment_times[i] for j in runs if j.segment_times[i] != None and j.is_trustworthy_segment(i)]
@@ -399,6 +406,7 @@ def get_average_run(runs : list[Run]) -> list[td|None]:
 
 
 def construct_runs_from_player(player : str):
+    """used for the run construction process"""
     files = os.listdir(splits_path + f"{player}/")
     runs = []
 
@@ -426,6 +434,7 @@ def construct_runs_from_player(player : str):
     
 
 def merge_tens_splits(split_up_runs : list[Run]):
+    """used for the run construction process"""
     new_runs = []
 
     for r in split_up_runs:
@@ -520,6 +529,7 @@ def improval_chance(ty):
 
 
 def plot_segment(seg_ind, root, start_date = dt(2,1,1), end_date = dt.now(), lin_reg = False):
+    """deprecated(?)"""
     times = get_times_from_segment(seg_ind, root, start_date = start_date, end_date = end_date)
     tx = [i for i in range(len(times))]
     ty = [t.total_seconds() for t in times]
@@ -538,21 +548,25 @@ def plot_segment(seg_ind, root, start_date = dt(2,1,1), end_date = dt.now(), lin
     plt.show()
 
 def sort_by_date(runs : list[Run]):
+    """sorts the runs by the time started"""
     date_func = lambda r : r.time_started
     runs.sort(key=date_func, reverse=True)
     return runs
     
 
 def get_seg_name(seg_ind, segments):
+    """used for the run construction process"""
     w_segment = segments[seg_ind]
     return w_segment[0].text
 
 
 
 def filter_date(runs, start_date, end_date):
+    """returns the subset of runs that was done in the given time range"""
     return [r for r in runs if r.time_started >= start_date and r.time_started <= end_date]
     
 def split_sessions(Runs : list[Run]):
+    """deprecated(?)"""
     #returns lists of lists of runs which represents sessions
     Runs = sort_by_date(Runs)
     session_threshold = td(minutes=30)
@@ -577,6 +591,7 @@ def split_sessions(Runs : list[Run]):
 
 
 def get_range_from_str(range):
+    """internal, returns a tuple associated with the passed string range, e.g. 0-99 returns (0,10)"""
     start_segment = 0
     end_segment = 11
 
@@ -616,6 +631,7 @@ def get_range_from_str(range):
     
 
 def limit_to_range(range : str, runs : list[Run]) -> list[Run]:
+    """returns the same runs with their segments limited to the given range"""
     #interpret range..
     start_segment, end_segment = get_range_from_str(range)
 
@@ -629,12 +645,12 @@ def limit_to_range(range : str, runs : list[Run]) -> list[Run]:
     return cut_runs
     
 
-def filter_runs(runs, start_date, end_date, types, players):
+def filter_runs(runs, start_date, end_date, types, lengths, players):
     runs = filter_date(runs, start_date, end_date)
     new_runs = []
 
     for r in runs:
-        if r.get_pit_type() in types and r.get_player() in players:
+        if r.get_pit_type() in types and r.get_player() in players and r.get_category_length() in lengths:
             new_runs.append(r)
      
     

@@ -31,12 +31,13 @@ players = os.listdir(sw.splits_path)
 
 all_players = deepcopy(players)
 
-types = [sw.PitType.CLASSIC, sw.PitType.BOOMERLESS]
+types = [sw.PitType.CLASSIC, sw.PitType.BOOMERLESS, sw.PitType.PIXLLESS]
 
+lengths = [sw.CategoryLength.FULL, sw.CategoryLength.LITE, sw.CategoryLength.APNT]
 
 runs : list[sw.Run] = []
 
-runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
+runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, lengths, players)
 
 
 ctx = sw.RunContext("Moonrise45555", sw.PitType.PIXLLESS, sw.CategoryLength.FULL, sw.SplitDetail.MERGED)
@@ -64,7 +65,7 @@ while True:
             end_date = dt.strptime(inp[2],"%Y-%m-%d")
         print("time of runs set to be between ", start_date ,"and ", end_date)
 
-        runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
+        runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, lengths, players)
 
     if inp[0] == "player":
         if inp[1] == "add":
@@ -83,18 +84,17 @@ while True:
         elif inp[1] == "all":
             players = all_players
 
-        runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
+        runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, lengths, players)
 
-    if inp[0] == "types":
+    if inp[0] == "type":
         if inp[1] == "add":
-            types += inp[2:]
+            types += [sw.PitType(inp[2])]
 
         elif inp[1] == "remove":
-            for p in inp[2:]:
-                try:
-                    pass
-                except:
-                    print(f"{p} not found.")
+            try:
+                  types.remove(sw.PitType(inp[2]))  
+            except:
+                print(f"{inp[2]} not found.")
         
         elif inp[1] == "clear":
             types.clear()
@@ -102,7 +102,25 @@ while True:
         elif inp[1] == "all":
             types = [sw.PitType.CLASSIC, sw.PitType.BOOMERLESS, sw.PitType.PIXLLESS]
 
-        runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
+        runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, lengths, players)
+
+    if inp[0] == "length":
+        if inp[1] == "add":
+            lengths += [sw.CategoryLength(inp[2])]
+
+        elif inp[1] == "remove":
+            try:
+                  lengths.remove(sw.CategoryLength(inp[2]))  
+            except:
+                print(f"{inp[2]} not found.")
+        
+        elif inp[1] == "clear":
+            lengths.clear()
+        
+        elif inp[1] == "all":
+            lengths  = [sw.CategoryLength.FULL, sw.CategoryLength.LITE, sw.CategoryLength.APNT]
+
+        runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, lengths, players)
 
     if inp[0] == "comsob":
         best_segments_runs = []
@@ -286,7 +304,7 @@ while True:
     if inp[0] == "pbs-time":
         found_pbs = []
         for p in players:
-            p_runs = sw.filter_runs(runs, start_date, end_date, types, [p])
+            p_runs = sw.filter_runs(runs, start_date, end_date, types, lengths, [p])
             pb_progression = list(reversed(sw.get_wr_progression(sw.sort_by_date(sw.limit_to_range("full", p_runs)))))
 
 
@@ -298,7 +316,6 @@ while True:
                 time_played = sw.get_playtime(sw.filter_date(p_runs, prior_pb_time, next_pb_time))
 
                 found_pbs.append((pb_progression[i+1], time_played))
-                print(prior_pb_time, next_pb_time, pb_progression[i+1].get_final_time(), pb_progression[i+1].get_player(), time_played)
 
             found_pbs.sort(key=lambda x: x[1], reverse=True)
 
