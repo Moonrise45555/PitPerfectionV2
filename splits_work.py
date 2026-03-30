@@ -641,6 +641,14 @@ def filter_runs(runs, start_date, end_date, types, players):
 
     return new_runs
 
+def get_playtime(runs):
+    time = td(0)
+    for r in runs:     
+        time += sum_td(r.segment_times)
+
+    return time
+
+
 def get_all_players():
     return os.listdir(splits_path)
     
@@ -701,20 +709,22 @@ def get_segment_ranges_as_runs(runs, range):
 
     return relevant_runs_sorted
 
-def get_wr_progression(runs : List[Run]):
+def get_wr_progression(runs : List[Run]) -> List[Run]:
     prog_entries = []
-    crnt_wr = td.min
-    crnt_date = dt.now()
+    crnt_wr = td.max
+    crnt_date = dt(year=1,month=1,day=1)
+
+    runs = list(reversed(sort_by_date(runs)))
 
     for r in runs:
         time = r.get_final_time()
 
-        if time > crnt_wr and crnt_date > r.time_started: # type: ignore
+        if time != None and time < crnt_wr and crnt_date < r.time_started: # type: ignore
             prog_entries.append(r)
             crnt_wr = r.get_final_time()
             crnt_date = r.time_started
     
-    return reversed(prog_entries)
+    return list(reversed(prog_entries))
 
 
 

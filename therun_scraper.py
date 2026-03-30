@@ -84,7 +84,7 @@ cat_names = ["flipside pit of 100 trials",
 
 
 
-
+time_offset = dt.timedelta(days=1)
 
 
 
@@ -158,7 +158,7 @@ for p_name in found_players:
 
 
 
-            if crnt_latest == None or crnt_latest.time_ended.replace(tzinfo=None) < (last_session_time).replace(tzinfo=None):
+            if crnt_latest == None or crnt_latest.time_ended.replace(tzinfo=None) < (last_session_time - time_offset).replace(tzinfo=None):
                 found_split_names.append((ctx, cat["splitsFile"], last_session_time))
 
 
@@ -200,8 +200,8 @@ for f in found_split_names:
         print("no crnt latest!")
     print("new_latest:", new_latest)
 
-    print("new_latest_modified: ", (new_latest - dt.timedelta(hours=2)))
-    if crnt_latest == None or crnt_latest.time_ended.replace(tzinfo=None) < (new_latest - dt.timedelta(hours=2)).replace(tzinfo=None):
+    print("new_latest_modified: ", (new_latest - time_offset))
+    if crnt_latest == None or crnt_latest.time_ended.replace(tzinfo=None) < (new_latest - time_offset).replace(tzinfo=None):
         dest_path = sw.splits_path + ctx.player + "/" + file_name_from_ctx(ctx)
 
         if os.path.exists(dest_path):

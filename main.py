@@ -31,9 +31,8 @@ players = os.listdir(sw.splits_path)
 
 all_players = deepcopy(players)
 
-types = [sw.PitType.BOOMERLESS, sw.PitType.CLASSIC, sw.PitType.PIXLLESS]
+types = [sw.PitType.CLASSIC, sw.PitType.BOOMERLESS]
 
-all_types = ["Boomerless", "Classic", "Lite", "Pixlless", "APNT"]
 
 runs : list[sw.Run] = []
 
@@ -101,7 +100,7 @@ while True:
             types.clear()
         
         elif inp[1] == "all":
-            types = all_types
+            types = [sw.PitType.CLASSIC, sw.PitType.BOOMERLESS, sw.PitType.PIXLLESS]
 
         runs = sw.filter_runs(db.get_all_runs(cur), start_date, end_date, types, players)
 
@@ -283,6 +282,32 @@ while True:
             for i in range(min(amnt, len(players))):
                 
                 print(f"{i + 1}. {sw.pad_to_length(merged[i][0], 15)}   {merged[i][1]}")
+
+    if inp[0] == "pbs-time":
+        found_pbs = []
+        for p in players:
+            p_runs = sw.filter_runs(runs, start_date, end_date, types, [p])
+            pb_progression = list(reversed(sw.get_wr_progression(sw.sort_by_date(sw.limit_to_range("full", p_runs)))))
+
+
+        
+
+            for i in range(len(pb_progression) - 1):
+                prior_pb_time = pb_progression[i].time_ended
+                next_pb_time = pb_progression[i + 1].time_ended
+                time_played = sw.get_playtime(sw.filter_date(p_runs, prior_pb_time, next_pb_time))
+
+                found_pbs.append((pb_progression[i+1], time_played))
+                print(prior_pb_time, next_pb_time, pb_progression[i+1].get_final_time(), pb_progression[i+1].get_player(), time_played)
+
+            found_pbs.sort(key=lambda x: x[1], reverse=True)
+
+        for i in found_pbs:
+            print( sw.pad_to_length(str(i[1]), 25),sw.get_run_descriptor(i[0]))
+
+        
+
+
 
             
 

@@ -85,7 +85,6 @@ def get_query_for_context(ctx : sw.RunContext):
 
 def get_runs_with_exact_context(cur, ctx : sw.RunContext):
     query = get_query_for_context(ctx)
-
     res = cur.execute(query)
 
     return get_runs_from_result(res)
