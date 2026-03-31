@@ -136,8 +136,19 @@ for p_name in found_players:
             delay += 1
     for cat in root:
         category_name : str = cat["displayRun"].split('#')[1].lower()
-        print(category_name)
         if category_name in cat_names:
+
+            try:
+                if cat["variables"]["Flipside/Flopside"] == "DS Lite":
+                    continue
+            except:
+                pass
+
+            try:
+                if cat["variables"]["Normal/NG+"] != "Normal":
+                    continue
+            except:
+                pass
             
             print("found " + category_name)
             ctx = ctx_from_cat_name(p_name,category_name)
