@@ -322,6 +322,36 @@ while True:
         for i in found_pbs:
             print( sw.pad_to_length(str(i[1]), 25),sw.get_run_descriptor(i[0]))
 
+    if inp[0] == "improval":
+        if len(inp) != 3:
+            print("invalid inputs")
+            continue
+
+        player = inp[1]
+        subdivisions = int(inp[2])
+
+        all_runs = sw.filter_runs(runs, start_date, end_date, types, lengths, [player])
+
+        segments = [sw.sort_by_date(sw.limit_to_range(r, all_runs)) for r in sw.split_names]
+
+        segment_lengths = [[r.get_final_time() for r in s if r.get_final_time() != None] for s in segments]
+
+        for i in range(subdivisions):
+            crnt_length = sw.sum_td([sw.average(s[int(i*(len(s)/subdivisions)):int((i+1)*(len(s)/subdivisions))]) for s in segment_lengths])
+            print(crnt_length)
+
+    if inp[0] == "eval":
+        print(eval(inp[1]))
+
+    if inp[0] == "plot":
+        rel_runs = sw.limit_to_range(inp[1], runs)
+        sw.plot_segment(rel_runs)
+
+
+
+
+
+
         
 
 

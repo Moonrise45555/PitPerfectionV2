@@ -528,17 +528,17 @@ def improval_chance(ty):
 
 
 
-def plot_segment(seg_ind, root, start_date = dt(2,1,1), end_date = dt.now(), lin_reg = False):
+def plot_segment(runs):
     """deprecated(?)"""
-    times = get_times_from_segment(seg_ind, root, start_date = start_date, end_date = end_date)
-    tx = [i for i in range(len(times))]
-    ty = [t.total_seconds() for t in times]
+    times = [r.get_final_time() for r in sort_by_date(runs) if r.get_final_time() != None]
+    tx = [sort_by_date(runs)[i].time_started.toordinal() for i in range(len(times))]
+    ty = [t.total_seconds()/60 for t in times]
     plt.scatter(tx, ty)
-    if lin_reg:
+    if True:
         b, a = np.polyfit(tx, ty, deg=1)
 
     
-        xseq = np.linspace(0, len(tx), num=100)
+        xseq = np.linspace(min(tx), len(tx), num=100)
         r_val = improval_chance(ty)
     
         plt.plot(xseq, a + b * xseq, color="k", lw=2.5)

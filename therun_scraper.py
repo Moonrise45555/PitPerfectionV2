@@ -20,7 +20,7 @@ except:
 
 
 #aliases = {"PTL1667" : "kora20_", "KoraFloof" : "kora20_", "vVanity485" : "Vanity485", "DiamondcrafterA" : "LunaEclipse_4"}
-blacklisted_players = ["savetheseasponges", "SwayNC", "PTL1667", "vVanity485", "DiamondcrafterA", "JCRRiles", "samlilwall06", "KoraFloof"] #blacklisted for splitting abnormally or for being an alias of another player
+blacklisted_players = ["savetheseasponges", "SwayNC", "PTL1667", "vVanity485", "DiamondcrafterA", "JCRRiles", "samlilwall06", "KoraFloof", "kora20__"] #blacklisted for splitting abnormally or for being an alias of another player
 
 
 type_from_cat_name = {"flipside pit of 100 trials" : sw.PitType.INVALID, 
